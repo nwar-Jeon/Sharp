@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.nwar.uuid.ui.fragment.MainFragment"
+        tools:layout="@layout/fragment_main"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_surveyQuestionFragment"
+            app:destination="@id/surveyQuestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.nwar.uuid.ui.fragment.SignInFragment"
+        tools:layout="@layout/fragment_login"
+        android:label="SignInFragment" >
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        tools:layout="@layout/fragment_signup"
+        android:name="com.nwar.uuid.ui.fragment.SignUpFragment"
+        android:label="SignUpFragment" />
+    <fragment
+        tools:layout="@layout/fragment_survey_question"
+        android:id="@+id/surveyQuestionFragment"
+        android:name="com.nwar.uuid.ui.fragment.SurveyQuestionFragment"
+        android:label="SurveyQuestionFragment" />
+</navigation>

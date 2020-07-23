@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/main_home_btn" android:title="home" app:showAsAction="ifRoom" android:icon="@drawable/ic_home_black_24dp"/>
+    <item android:id="@+id/main_survey_btn" android:title="survey" app:showAsAction="ifRoom" android:icon="@drawable/ic_insert_chart_black_24dp"/>
+    <item android:id="@+id/main_gift_btn" android:title="gift" app:showAsAction="ifRoom" android:icon="@drawable/ic_card_giftcard_black_24dp"/>
+    <item android:id="@+id/main_profile_btn" android:title="mypage" app:showAsAction="ifRoom" android:icon="@drawable/ic_account_circle_black_24dp"/>
+</menu>
