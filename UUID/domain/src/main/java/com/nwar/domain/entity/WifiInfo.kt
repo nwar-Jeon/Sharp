@@ -1,4 +1,4 @@
-package com.nwar.uuid.wifi
+package com.nwar.domain.entity
 
 data class WifiInfo(
     val name : String,

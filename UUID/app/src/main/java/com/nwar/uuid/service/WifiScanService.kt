@@ -5,19 +5,15 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.nwar.uuid.R
-import com.nwar.uuid.extend.setWifiEnable
 import com.nwar.uuid.extend.wifiScan
 import com.nwar.uuid.receiver.WifiScanReceiver
-import com.nwar.uuid.ui.lifecycle.LifecycleOwner
 import com.nwar.uuid.util.intentFilter
 import com.nwar.uuid.viewModel.viewModel.WifiScanViewModel
-import dagger.android.DaggerIntentService
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.yield
-import okhttp3.internal.waitMillis
 import org.jetbrains.anko.notificationManager
+import org.jetbrains.anko.toast
+import org.jetbrains.anko.wifiManager
 import javax.inject.Inject
 
 class WifiScanService() : BaseService("WifiScanService") {
@@ -43,10 +39,6 @@ class WifiScanService() : BaseService("WifiScanService") {
             .build()
     }
 
-    override fun onCreate() {
-        super.onCreate()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(receiver)
@@ -59,8 +51,8 @@ class WifiScanService() : BaseService("WifiScanService") {
         runBlocking {
             while (true) {
                 delay(10000)
-                setWifiEnable()
-                wifiScan()
+                if(wifiManager.isWifiEnabled) wifiScan()
+                else toast("와이파이를 켜주세요.")
             }
         }
     }

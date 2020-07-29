@@ -6,16 +6,14 @@ import com.nwar.uuid.databinding.ItemBannerSaleBinding
 import com.nwar.uuid.ui.base.BaseAdapter
 import com.nwar.uuid.ui.base.BaseViewHolder
 import com.nwar.uuid.ui.viewholder.SaleBannerViewHolder
+import com.nwar.uuid.viewModel.viewModel.HomeViewModel
 
-class SaleBannerAdapter(context : Context) : BaseAdapter<ItemBannerSaleBinding>(context) {
+class SaleBannerAdapter(context : Context, val vm : HomeViewModel) : BaseAdapter<ItemBannerSaleBinding>(context) {
 
     override val layoutId : Int = R.layout.item_banner_sale
 
-    override fun getItemCount() = 10
+    override fun getItemCount() = vm.surveyList.value?.size ?: 0
 
-    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-    }
-
-    override fun createViewHolder(binding: ItemBannerSaleBinding, viewType: Int): BaseViewHolder = SaleBannerViewHolder(binding)
+    override fun createViewHolder(binding: ItemBannerSaleBinding, viewType: Int): BaseViewHolder = SaleBannerViewHolder(binding, vm)
 
 }

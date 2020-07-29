@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">UUID</string>
+    <string name="question_number">Q%d</string>
 </resources>

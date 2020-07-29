@@ -2,7 +2,7 @@ package com.nwar.uuid.viewModel.viewModel
 
 import androidx.lifecycle.Lifecycle
 import com.nwar.uuid.ui.lifecycle.LifecycleListener
-import com.nwar.uuid.wifi.WifiInfo
+import com.nwar.domain.entity.WifiInfo
 
 class WifiScanViewModel() : LifecycleListener {
 

@@ -9,3 +9,5 @@ fun percentageString(a : Int, b : Int) = "${percentage(a,b)}%"
 fun mainHomeWelcomMessage(name : String) = "${name}님, 새로운 설문을 확인해보세요."
 
 fun celebrateToCollectPoint(point : Int) = "이번 주에 ${point}포인트를 획득하셨어요!"
+
+fun pointDisplayInSurveyList(point : Int) = "${point}P >"

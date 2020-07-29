@@ -16,7 +16,8 @@ class MainFragment() : BaseFragment<FragmentMainBinding>() {
     override val layoutId: Int
         get() = R.layout.fragment_main
 
-    override val viewModel: MainFragmentViewModel by lazy { MainFragmentViewModel() }
+    @Inject
+    override lateinit var viewModel: MainFragmentViewModel
 
     override fun setViewModel() {
         binding.vm = viewModel

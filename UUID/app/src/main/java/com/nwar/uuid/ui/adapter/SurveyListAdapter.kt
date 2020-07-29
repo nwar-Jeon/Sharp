@@ -13,9 +13,5 @@ class SurveyListAdapter(context: Context, val vm : SurveyViewModel) : BaseAdapte
 
     override fun createViewHolder(binding: ItemSurveyListBinding, viewType: Int) = SurveyListViewHolder(binding, vm)
 
-    override fun getItemCount() = 10
-
-    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        holder.bind(position)
-    }
+    override fun getItemCount() = vm.surveyList.value?.size ?: 0
 }

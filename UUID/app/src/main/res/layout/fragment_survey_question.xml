@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <import type="com.nwar.uuid.util.DataBindingUtilKt"/>
+        <import type="com.nwar.domain.enumerate.Satisfaction"/>
         <variable
             name="vm"
             type="com.nwar.uuid.viewModel.viewModel.SurveyQuestionViewModel" />
@@ -19,7 +20,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@{DataBindingUtilKt.percentageString(vm.index, vm.count)}"
+            android:text="@{DataBindingUtilKt.percentageString(vm.index + 1, vm.questionList.size())}"
+            tools:text="60%"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,8 +33,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:paddingTop="2dp"
-            android:progress="@{DataBindingUtilKt.percentage(vm.index, vm.count)}"
+            android:progress="@{DataBindingUtilKt.percentage(vm.index + 1, vm.questionList.size())}"
             android:progressDrawable="@drawable/bg_survey_progress"
+            tools:progress="60"
             app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView12"
             app:layout_constraintEnd_toStartOf="@+id/appCompatTextView11"
             app:layout_constraintStart_toEndOf="@+id/appCompatTextView12"
@@ -44,7 +47,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@{DataBindingUtilKt.progress(vm.index, vm.count)}"
+            android:text="@{DataBindingUtilKt.progress(vm.index + 1, vm.questionList.size())}"
+            tools:text="3/5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -74,10 +78,11 @@
                 android:id="@+id/appCompatTextView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Q3"
+                android:text="@{@string/question_number(vm.index+1)}"
                 android:textColor="@android:color/black"
                 android:textSize="36sp"
                 android:textStyle="bold"
+                tools:text="Q3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
@@ -87,7 +92,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:text="제품에 대한 만족도는.."
+                android:text="@{vm.questionList.get(vm.index).question}"
+                tools:text="제품에 대한 만족도는.."
                 android:textColor="@android:color/black"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="@+id/appCompatTextView13"
@@ -96,32 +102,38 @@
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/survey_radio_group"
                 app:layout_constraintStart_toStartOf="@+id/appCompatTextView13"
                 app:layout_constraintTop_toBottomOf="@+id/appCompatTextView14">
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="@{(v) -> vm.clickSatisfaction(Satisfaction.VERY_GOOD)}"
                     android:text="매우 만족" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="@{(v) -> vm.clickSatisfaction(Satisfaction.GOOD)}"
                     android:text="만족" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="@{(v) -> vm.clickSatisfaction(Satisfaction.NOT_BAD)}"
                     android:text="보통" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="@{(v) -> vm.clickSatisfaction(Satisfaction.BAD)}"
                     android:text="불만족" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="@{(v) -> vm.clickSatisfaction(Satisfaction.VERY_BAD)}"
                     android:text="매우 불만족" />
             </RadioGroup>
         </LinearLayout>

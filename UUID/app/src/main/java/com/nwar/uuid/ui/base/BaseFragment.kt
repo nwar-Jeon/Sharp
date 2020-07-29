@@ -1,6 +1,7 @@
 package com.nwar.uuid.ui.base
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,10 +39,15 @@ abstract class BaseFragment<T : ViewDataBinding>() : DaggerFragment() {
         super.onViewCreated(view, savedInstanceState)
         lifecycleOwner.register(viewModel)
         lifecycleOwner.sendEvent(Lifecycle.Event.ON_CREATE)
-        viewModel.toast.observe(this, Observer { toast(it) })
-        viewModel.navigateUp.observe(this, Observer { if(it) navigateUp() })
         binding.lifecycleOwner = this
         setViewModel()
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        viewModel.toast.observe(this, Observer { toast(it) })
+        viewModel.navigateUp.observe(this, Observer { if(it) navigateUp() })
+        viewModel.nextFragment.observe(this, Observer { if(it!=null) { navigate(it) } })
     }
 
     override fun onStop() {

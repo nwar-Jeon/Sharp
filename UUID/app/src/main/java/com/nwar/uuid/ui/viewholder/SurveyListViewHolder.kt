@@ -5,8 +5,8 @@ import com.nwar.uuid.ui.base.BaseViewHolder
 import com.nwar.uuid.viewModel.viewModel.SurveyViewModel
 
 class SurveyListViewHolder(val binding : ItemSurveyListBinding, val vm : SurveyViewModel) : BaseViewHolder(binding.root) {
-    override fun bind(position: Int) {
-        binding.position = position
+    override fun bind() {
+        binding.position = index
         binding.vm = vm
     }
 }

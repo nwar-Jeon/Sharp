@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,9 +11,6 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -19,52 +18,97 @@
             android:id="@+id/appCompatImageView2"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="64dp"
             android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="#555555"
+            android:hint="ID"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="#555555"
+            android:hint="PW"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/loginButton2"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="64dp"
             android:gravity="center"
+            android:onClick="@{(v) -> vm.requestLogin()}"
             android:paddingVertical="16dp"
             android:text="로그인"
-            app:strokeColor="#555555"
-            app:rippleColor="#999999"
             android:textAppearance="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:textColor="#555555"
-            android:textSize="18sp"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:onClick="@{(v) -> vm.requestLogin()}"
-            app:layout_constraintBottom_toTopOf="@+id/appCompatTextView4"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+            app:rippleColor="#999999"
+            app:strokeColor="#555555" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/appCompatTextView4"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
-            android:onClick="@{(v) -> vm.toSignUp()}"
-            android:textAppearance="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:textColor="#555555"
-            android:textSize="18sp"
-            app:strokeColor="#555555"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_marginBottom="84dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="64dp"
             android:gravity="center"
+            android:onClick="@{(v) -> vm.toSignUp()}"
             android:paddingVertical="16dp"
             android:text="회원가입"
-            app:rippleColor="#999999"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textAppearance="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textColor="#555555"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginButton2"
+            app:rippleColor="#999999"
+            app:strokeColor="#555555" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

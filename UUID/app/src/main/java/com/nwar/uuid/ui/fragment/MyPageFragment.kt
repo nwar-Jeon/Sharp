@@ -5,12 +5,14 @@ import com.nwar.uuid.databinding.FragmentMainMypageBinding
 import com.nwar.uuid.ui.base.BaseFragment
 import com.nwar.uuid.ui.base.BaseViewModel
 import com.nwar.uuid.viewModel.viewModel.MyPageViewModel
+import javax.inject.Inject
 
 class MyPageFragment() : BaseFragment<FragmentMainMypageBinding>() {
     override val layoutId: Int
         get() = R.layout.fragment_main_mypage
 
-    override val viewModel: MyPageViewModel by lazy { MyPageViewModel() }
+    @Inject
+    override lateinit var viewModel: MyPageViewModel
 
     override fun setViewModel() {
         binding.vm = viewModel

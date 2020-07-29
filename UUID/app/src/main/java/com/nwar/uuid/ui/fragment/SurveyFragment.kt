@@ -18,7 +18,8 @@ class SurveyFragment() : BaseFragment<FragmentMainSurveyBinding>(){
     override val layoutId: Int
         get() = R.layout.fragment_main_survey
 
-    override val viewModel: SurveyViewModel by lazy { SurveyViewModel() }
+    @Inject
+    override lateinit var viewModel: SurveyViewModel
 
     override fun setViewModel() {
         binding.vm = viewModel

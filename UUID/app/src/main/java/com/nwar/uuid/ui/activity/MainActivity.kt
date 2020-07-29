@@ -28,6 +28,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        stopService(wifiScanServiceIntent)
+    }
+
     private fun checkPermission(vararg permission : String) : Int {
         var result = PackageManager.PERMISSION_GRANTED
         permission.forEach { if(checkSelfPermission(it)==PackageManager.PERMISSION_DENIED) result = PackageManager.PERMISSION_DENIED }
