@@ -6,6 +6,7 @@ import com.nwar.data.mapper.toAccount
 import com.nwar.data.mapper.toBodyOrThrow
 import com.nwar.data.mapper.toInt
 import com.nwar.data.mapper.toUser
+import com.nwar.data.model.Account
 import com.nwar.domain.entity.User
 import io.reactivex.Flowable
 
@@ -23,7 +24,8 @@ class AccountDataSourceImpl(val api : AccountAPI, val accountCache : AccountCach
 
     override fun signUp(account : User): Flowable<User> {
         return api.signUp(account.toAccount())
-            .map { it.toBodyOrThrow()?.toUser() }
+            .map { it.toBodyOrThrow() }
+            .map { Account(token = it).toUser() }
     }
 
     override fun getAccount(): Flowable<User> {

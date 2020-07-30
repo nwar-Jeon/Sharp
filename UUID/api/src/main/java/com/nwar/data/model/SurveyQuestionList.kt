@@ -4,6 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 data class SurveyQuestionList(
     @SerializedName("questions")
-    val list : List<Question>
+    val list : List<Question> = listOf()
 ) {
 }

@@ -25,7 +25,7 @@ class WifiScanService() : BaseService("WifiScanService") {
         get() = "Sharp"
 
     @Inject
-    override lateinit var viewModel : WifiScanViewModel
+    override lateinit var viewModel: WifiScanViewModel
 
     @Inject
     lateinit var receiver: WifiScanReceiver
@@ -50,9 +50,9 @@ class WifiScanService() : BaseService("WifiScanService") {
         registerReceiver(receiver, intentFilter)
         runBlocking {
             while (true) {
-                delay(10000)
-                if(wifiManager.isWifiEnabled) wifiScan()
+                if (wifiManager.isWifiEnabled) wifiScan()
                 else toast("와이파이를 켜주세요.")
+                delay(10000)
             }
         }
     }

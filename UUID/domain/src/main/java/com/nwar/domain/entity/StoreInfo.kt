@@ -1,7 +1,7 @@
 package com.nwar.domain.entity
 
 data class StoreInfo(
-    val id : Int,
+    val id : String,
     val imageURL : String,
     val name : String,
     val sales : String,

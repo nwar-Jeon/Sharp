@@ -1,5 +1,6 @@
 package com.nwar.uuid.ui.base
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,6 +27,12 @@ abstract class BaseFragment<T : ViewDataBinding>() : DaggerFragment() {
     fun navigate(action : Int?) = if(action!=null && navController.currentDestination?.getAction(action)!=null) navController.navigate(action) else Unit
     fun navigateUp() = navController.navigateUp()
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        lifecycleOwner.register(viewModel)
+        lifecycleOwner.sendEvent(Lifecycle.Event.ON_CREATE)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,8 +44,6 @@ abstract class BaseFragment<T : ViewDataBinding>() : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lifecycleOwner.register(viewModel)
-        lifecycleOwner.sendEvent(Lifecycle.Event.ON_CREATE)
         binding.lifecycleOwner = this
         setViewModel()
         observeViewModel()

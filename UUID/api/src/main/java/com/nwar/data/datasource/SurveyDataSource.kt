@@ -8,11 +8,11 @@ import io.reactivex.Flowable
 interface SurveyDataSource {
     fun loadSurveyInfoList(token: String) : Flowable<List<SurveyInfo>>
 
-    fun loadSurveyQuestionList(token : String, surveyId : Int) : Flowable<List<Question>>
+    fun loadSurveyQuestionList(token : String, surveyId : String) : Flowable<List<Question>>
 
-    fun saveSurveyInfoToCache(surveyInfo: StoreInfo)
+    fun saveSurveyInfoToCache(surveyInfo: StoreInfo) : Flowable<Unit>
 
-    fun submitSurvey(token : String, surveyId: Int, surveyResult : List<Int>) : Flowable<Unit>
+    fun submitSurvey(token : String, surveyId: String, surveyResult : List<Int>) : Flowable<Unit>
 
     fun loadSurveyInfoAtCache() : Flowable<StoreInfo>
 }

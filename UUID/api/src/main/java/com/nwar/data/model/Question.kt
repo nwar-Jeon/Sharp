@@ -4,6 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 data class Question(
     @SerializedName("heading")
-    val question : String
+    val question : String = ""
 ) {
 }

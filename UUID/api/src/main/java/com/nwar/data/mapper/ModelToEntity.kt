@@ -8,7 +8,7 @@ import com.nwar.domain.entity.StoreInfo
 import com.nwar.domain.entity.SurveyQuestion
 import com.nwar.domain.entity.User
 
-fun Account.toUser() = User(this.id, this.password, this.username, this.token)
+fun Account.toUser() = User(this.id, this.password, this.username, "Bearer ${this.token}")
 
 fun Question.toSurveyQuestion() = SurveyQuestion(this.question)
 

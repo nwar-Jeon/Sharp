@@ -1,6 +1,9 @@
 package com.nwar.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class WifiInfoModelList(
-    val list : List<WifiInfoModel>
+    @SerializedName("stores")
+    val list : Collection<WifiInfoModel> = listOf()
 ) {
 }

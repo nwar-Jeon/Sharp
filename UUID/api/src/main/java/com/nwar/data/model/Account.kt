@@ -4,12 +4,12 @@ import com.google.gson.annotations.SerializedName
 
 data class Account(
     @SerializedName("id")
-    val id : String,
+    val id : String = "",
     @SerializedName("password")
-    val password : String,
+    val password : String = "",
     @SerializedName("username")
-    val username : String,
+    val username : String = "",
     @SerializedName("access_token")
-    val token : String
+    val token : String = ""
 ) {
 }

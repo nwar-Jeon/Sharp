@@ -8,9 +8,9 @@ import io.reactivex.Flowable
 interface SurveyRepository {
     fun loadSurveyInfoList() : Flowable<RequestResult<StoreInfo>>
 
-    fun loadSurveyQuestionList(token : String, surveyId: Int) : Flowable<RequestResult<SurveyQuestion>>
+    fun loadSurveyQuestionList() : Flowable<RequestResult<SurveyQuestion>>
 
-    fun saveSurveyInfoToCache(data : StoreInfo)
+    fun saveSurveyInfoToCache(data : StoreInfo) : Flowable<RequestResult<Unit>>
 
-    fun submitSurvey(surveyId : Int, surveyResult : List<Int>) : Flowable<RequestResult<Unit>>
+    fun submitSurvey(surveyResult : List<Int>) : Flowable<RequestResult<Unit>>
 }

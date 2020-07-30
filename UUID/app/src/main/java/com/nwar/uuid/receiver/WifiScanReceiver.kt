@@ -11,8 +11,9 @@ import com.nwar.domain.entity.WifiInfo
 
 class WifiScanReceiver(private val viewModel : WifiScanViewModel, private val wifiManager: WifiManager) : BroadcastReceiver(){
     override fun onReceive(context: Context?, intent: Intent?) {
-        viewModel.addAllWifi(getWifiScanResultAsCount(5))
+        viewModel.addAllWifi(getWifiScanResultAsCount(2))
         viewModel.wifiList.forEach { Log.e("Wifi Info : ", "NAME : ${it.name} MAC : ${it.macAdd} RSSI : ${it.strength}") }
+        viewModel.sendWifiInfo()
     }
 
     private fun getWifiScanResultAsCount(count : Int)
